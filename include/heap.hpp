@@ -79,6 +79,7 @@ namespace adt
 
         int size() const
         {
+            // * return the size of the data
             return m_data.size();
         }
 
@@ -95,22 +96,34 @@ namespace adt
 
     private:
 
+        // * private helper functions
+
         void printPretty(std::ostream& out, const int& node, std::string indent, const bool& last) const
         {
+            // * indent out
             out << indent;
+            // * check if the node is the last child
             if (last)
             {
+                // * print list child marker
                 out << "\\-";
+                // * add space to indent
                 indent += "  ";
             } else {
+                // * print child maker
                 out << "|-";
+                // * add tree root to indent
                 indent += "| ";
             }
 
+            // * print the node name
             out << m_data[node] << std::endl;
 
+
+            // * loop through each child of the node        
             for (int i = 1; i <= 2 && (node*2)+i < m_data.size(); i++)
             {
+                // recerivly call pretty print again for each child
                 printPretty(out, (node*2)+i, indent, i == 2);
             }
         }
@@ -129,28 +142,38 @@ namespace adt
 
         void heapify(int t_i)
         {
-            std::cout << m_data << std::endl;
+            // * get the beginning of the data
             typename adt::list<_node_type>::iterator pos = m_data.begin();
+            // * advance the interator to position i
             std::advance(pos, t_i);
+            // * get a pointer to the largest data value
             _node_type *largest = &(*pos);
+            // * get a refernce to the left child, if has no child, it is equal to largest
             _node_type &left_child = (2*t_i + 1 < m_data.size()) ? m_data[2*t_i + 1] : *largest;
+            // * get a refernce to the right child, if has no child, it is equal to largest
             _node_type &right_child = (2*t_i + 2 < m_data.size()) ? m_data[2*t_i + 2] : *largest;
 
+            // * compare largest against left child, check weather min or max heap to take either gratest value or smallest
             if ((_heap_type == heap_types::max_heap) ? left_child > *largest : left_child < *largest)
             {
+                // * set largest to left value
                 largest = &left_child;
             }
 
+            // * compare largest against right child, check weather min or max heap to take either gratest value or smallest
             if ((_heap_type == heap_types::max_heap) ? right_child > *largest : right_child < *largest)
             {
+                // * set largest to right value
                 largest = &right_child;
             }
 
+            // * swap the values of pos and largest
             std::swap(*pos, *largest);
         }
 
     private:
 
+        // * store heap data
         list<_node_type> m_data;
     };
 }
