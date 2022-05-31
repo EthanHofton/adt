@@ -10,4 +10,7 @@
 // * queue class
 #include "queue.hpp"
 
+// * max heap and min heap classes
+#include "heap.hpp"
+
 #endif
