@@ -65,6 +65,12 @@ namespace adt
             return _size;
         }
 
+        void clear()
+        {
+            // * reset the start point
+            m_pos = 0;
+        }
+
     private:
 
         // * iterator class
@@ -72,6 +78,7 @@ namespace adt
         {
         public:
             explicit iterator(int t_pos = 0) { m_pos = t_pos; }
+            iterator& operator=(int &t_val) { m_pos = t_val; return (*this); }
             iterator& operator++() { m_pos++; return *this; }
             iterator operator++(int) { iterator retval = (*this); ++(*this); return retval; }
             iterator& operator--() { m_pos--; return *this; }
@@ -135,6 +142,12 @@ namespace adt
         {
             // * return if the data list is empty
             return m_data.empty();
+        }
+
+        void clear()
+        {
+            // clear the underlying data
+            m_data.clear();
         }
 
     private:
