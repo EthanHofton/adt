@@ -220,7 +220,7 @@ namespace adt
             return m_tail->m_parent->m_data;
         }
 
-        int size()
+        int size() const
         {
             return m_size;
         }
