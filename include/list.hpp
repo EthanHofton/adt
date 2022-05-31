@@ -66,6 +66,18 @@ namespace adt
             return *this;
         }
 
+        list<_node_type>& operator=(const list<_node_type>& t_other)
+        {
+            clear();
+
+            for (auto item : t_other)
+            {
+                push_back(item);
+            }
+
+            return *this;
+        }
+
         ~list()
         {
             // * this will recersivley delete all of the heads children
@@ -74,7 +86,7 @@ namespace adt
 
         _node_type &at(int t_pos) const
         {
-            if (m_size < t_pos)
+            if (m_size <= t_pos)
             {
                 throw std::runtime_error("SIZE ERROR: cannot read at this position");
             }
