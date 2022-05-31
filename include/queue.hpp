@@ -80,6 +80,16 @@ namespace adt
             return _size;
         }
 
+        void clear()
+        {
+            // * set the size to zero
+            m_size = 0;
+            // * set the front of the queue to zero
+            m_front = 0;
+            // * set the rear of the queue to zero
+            m_rear = 0;
+        }
+
     private:
 
         // * store the posoitions
@@ -135,6 +145,12 @@ namespace adt
         {
             // * return if the data list is empty
             return m_data.empty();
+        }
+
+        void clear()
+        {
+            // * clear the underlying queue data
+            m_data.clear();
         }
 
     private:
