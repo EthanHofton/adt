@@ -33,10 +33,42 @@ namespace adt
             createHeap();
         }
 
-        void peek()
+        void peek() const
         {
             // * return the front of the heap (first element)
             return m_data.front();
+        }
+
+        void pop()
+        {
+            // * alogorihm for popping from heap:
+            // *    (-) swap the first and the last
+            // *    (-) remove the last element from the heap
+            // *    (-) reconstruct heap
+            // * first check if the size of the heap is 1
+            if (m_data.size() == 1)
+            {
+                // * delete the last element of the heap
+                m_data.pop_back();
+                // * nothing left in the heap, so just return
+                return;
+            }
+            // * swap the first and the last element
+            // * get an iterator to the end of the list
+            auto end = m_data.end();
+            // * decrement the end
+            end--;
+            // * stop the beggining and the end
+            std::swap(*m_data.begin(), *(end));
+            // * remove the last element
+            m_data.pop_back();
+            // * reconstuct the heap
+            createHeap();
+        }
+
+        int size() const
+        {
+            return m_data.size();
         }
 
     public:
