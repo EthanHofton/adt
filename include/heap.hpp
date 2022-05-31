@@ -12,7 +12,7 @@ namespace adt
         max_heap       // * for min heap
     };
     
-    // * min heap implimentation
+    // * heap implimentation
     // * compleate tree that follows
     // * the heap invariant:
     // *    - all children must be less then the parent (max heap)
@@ -87,7 +87,7 @@ namespace adt
         // * std functions
 
         // * std cout
-        friend std::ostream& operator<<(std::ostream& t_out, const heap<_node_type, heap_types::max_heap>& l)
+        friend std::ostream& operator<<(std::ostream& t_out, const heap<_node_type, _heap_type>& l)
         {
             l.printPretty(t_out, 0, "", true);
             return t_out;
@@ -129,18 +129,20 @@ namespace adt
 
         void heapify(int t_i)
         {
+            std::cout << m_data << std::endl;
             typename adt::list<_node_type>::iterator pos = m_data.begin();
             std::advance(pos, t_i);
             _node_type *largest = &(*pos);
             _node_type &left_child = m_data[2*t_i + 1];
             _node_type &right_child = m_data[2*t_i + 2];
 
-            if (left_child > *largest)
+
+            if ((_heap_type == heap_types::max_heap) ? left_child > *largest : left_child < *largest)
             {
                 largest = &left_child;
             }
 
-            if (right_child > *largest)
+            if ((_heap_type == heap_types::max_heap) ? right_child > *largest : right_child < *largest)
             {
                 largest = &right_child;
             }
@@ -151,12 +153,6 @@ namespace adt
     private:
 
         list<_node_type> m_data;
-    };
-
-    // * min heap implimentation
-    template<typename _node_type>
-    class heap<_node_type, heap_types::min_heap>
-    {
     };
 }
 
