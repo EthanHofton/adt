@@ -66,6 +66,17 @@ namespace adt
             createHeap();
         }
 
+        void push(_node_type t_data)
+        {
+            // * push algortihm:
+            // *    (-) add the new item to the end of the list
+            // *    (-) reconstruct the heap
+            // * add new item to list
+            m_data.push_back(t_data);
+            // * reconstuct heap
+            createHeap();
+        }
+
         int size() const
         {
             return m_data.size();
