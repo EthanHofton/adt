@@ -133,9 +133,8 @@ namespace adt
             typename adt::list<_node_type>::iterator pos = m_data.begin();
             std::advance(pos, t_i);
             _node_type *largest = &(*pos);
-            _node_type &left_child = m_data[2*t_i + 1];
-            _node_type &right_child = m_data[2*t_i + 2];
-
+            _node_type &left_child = (2*t_i + 1 < m_data.size()) ? m_data[2*t_i + 1] : *largest;
+            _node_type &right_child = (2*t_i + 2 < m_data.size()) ? m_data[2*t_i + 2] : *largest;
 
             if ((_heap_type == heap_types::max_heap) ? left_child > *largest : left_child < *largest)
             {
