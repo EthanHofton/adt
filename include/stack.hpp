@@ -132,13 +132,13 @@ namespace adt
             return m_data.back();
         }
 
-        int size()
+        int size() const
         {
             // * return the size of the stack list
             return m_data.size();
         }
 
-        bool empty()
+        bool empty() const
         {
             // * return if the data list is empty
             return m_data.empty();
