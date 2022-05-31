@@ -78,7 +78,7 @@ namespace adt
         {
         public:
             explicit iterator(int t_pos = 0) { m_pos = t_pos; }
-            iterator& operator=(int &t_val) { m_pos = t_val; return (*this); }
+            iterator& operator=(const int &t_val) { m_pos = t_val; return (*this); }
             iterator& operator++() { m_pos++; return *this; }
             iterator operator++(int) { iterator retval = (*this); ++(*this); return retval; }
             iterator& operator--() { m_pos--; return *this; }
