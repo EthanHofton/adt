@@ -203,6 +203,9 @@ namespace adt
             m_head->m_child = m_tail;
             // * set tails parent to head
             m_tail->m_parent = m_head;
+
+            // * set size to zero
+            m_size = 0;
         }
 
         _node_type front() const
