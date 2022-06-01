@@ -13,4 +13,7 @@
 // * max heap and min heap classes
 #include "heap.hpp"
 
+// * binary tree
+#include "binary_tree.hpp"
+
 #endif
